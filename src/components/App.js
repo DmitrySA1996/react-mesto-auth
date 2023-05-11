@@ -8,8 +8,8 @@ import ImagePopup from "./ImagePopup.js";
 import EditProfilePopup from "./EditProfilePopup.js";
 import EditAvatarPopup from "./EditAvatarPopup.js";
 import AddPlacePopup from "./AddPlacePopup.js";
-import { Route, Switch, Redirect } from "react-router-dom";
-import ProtectedRoute from "./ProtectedRoute"
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import ProtectedRoute from "./ProtectedRoute.js"
 import Register from "./Register"
 import Login from "./Login"
 import InfoToolTip from "./InfoToolTip.js"
@@ -22,7 +22,7 @@ function App() {
 
   const [isLoggedIn, setIsLoggedIn] = React.useState(false)
   const [email, setEmail] = React.useState("")
-  const history = React.useHistory()
+  const navigate = useNavigate()
   const [isInfoToolTipPopupOpen, setInfoToolTipPopupOpen] = React.useState(false)
   const [isSuccess, setIsSuccess] = React.useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
@@ -135,7 +135,7 @@ function App() {
         .then((res) => {
           setIsLoggedIn(true)
           setEmail(res.data.email)
-          history.push("/")
+          navigate.push("/")
         })
         .catch((err) => {
           if (err.status === 401) {
@@ -144,13 +144,13 @@ function App() {
           console.log("401 — Переданный токен некорректен")
         })
     }
-  }, [history])
+  }, [navigate])
 
   function handleSignOut() {
     localStorage.removeItem("jwt")
     setIsLoggedIn(false)
     setIsMobileMenuOpen(false)
-    history.push("/sign-in")
+    navigate.push("/sign-in")
     setIsMobileMenuOpen(false)
   }
 
@@ -167,7 +167,7 @@ function App() {
         localStorage.setItem("jwt", res.token)
         setIsLoggedIn(true)
         setEmail(email)
-        history.push("/")
+        navigate.push("/")
       })
       .catch((err) => {
         if (err.status === 400) {
@@ -184,7 +184,7 @@ function App() {
       .then((res) => {
         setInfoToolTipPopupOpen(true)
         setIsSuccess(true)
-        history.push("/sign-in")
+        navigate.push("/sign-in")
       })
       .catch((err) => {
         if (err.status === 400) {
@@ -207,20 +207,21 @@ function App() {
             isLoggedIn={isLoggedIn}
           />
 
-          <Switch>
-            <ProtectedRoute
-              exact
-              path="/"
-              isLoggedIn={isLoggedIn}
-              onEditAvatar={handleEditAvatarClick}
-              onEditProfile={handleEditProfileClick}
-              onAddPlace={handleAddPlaceClick}
-              onCardClick={setSelectedCard}
-              onCardLike={handleCardLike}
-              onDeletedCard={handleCardDelete}
-              cards={cards}
-              component={Main}
-            />
+          <ProtectedRoute
+            exact
+            path="/"
+            isLoggedIn={isLoggedIn}
+            onEditAvatar={handleEditAvatarClick}
+            onEditProfile={handleEditProfileClick}
+            onAddPlace={handleAddPlaceClick}
+            onCardClick={setSelectedCard}
+            onCardLike={handleCardLike}
+            onDeletedCard={handleCardDelete}
+            cards={cards}
+            component={Main}
+          />
+
+          <Routes>
             <Route path="/sign-in">
               <Login onLogin={handleLoginSubmit} />
             </Route>
@@ -228,9 +229,9 @@ function App() {
               <Register onRegister={handleRegisterSubmit} />
             </Route>
             <Route>
-              {isLoggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
+              {isLoggedIn ? <Navigate to="/" /> : <Navigate to="/sign-in" />}
             </Route>
-          </Switch>
+          </Routes>
 
           {isLoggedIn && <Footer />}
           <EditProfilePopup
