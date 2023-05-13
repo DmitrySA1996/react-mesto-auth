@@ -59,6 +59,19 @@
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 /* -----------------------------------------------------------------------------------------*/
 
+/* секция auth------------------------------------------------------------------------*/
+@import url(../blocks/auth/auth.css);
+@import url(../blocks/auth/__form-input/auth__form-input.css);
+@import url(../blocks/auth/__form-submit/auth__form-submit.css);
+@import url(../blocks/auth/__form-submit/_size/auth__form-submit-btn_size.css);
+@import url(../blocks/auth/__form/auth__form.css);
+@import url(../blocks/auth/__sign-up/auth__sign-up.css);
+@import url(../blocks/auth/__sign-up/_link/auth__sign-up_link.css);
+@import url(../blocks/auth/__sign-up/_text/auth__sign-up_text.css);
+@import url(../blocks/auth/__form-submit/auth__form-submit.css);
+@import url(../blocks/auth/__title/auth__title.css);
+/* -----------------------------------------------------------------------------------------*/
+
 /*
 *{
     outline: 1px red solid;

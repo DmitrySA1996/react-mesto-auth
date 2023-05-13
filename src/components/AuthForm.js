@@ -44,15 +44,15 @@ function AuthForm({ title, buttonText, onSubmit, isSubmitting }) {
         />
 
         <button
-          className="auth__form-submit-btn"
+          className="auth__form-submit"
           type="submit"
           disabled={isSubmitting}
         >
           {isSubmitting ? "Сохранение..." : buttonText}
         </button>
 
-        <div className="auth__signup">
-          <p className="auth__signup_text">
+        <div className="auth__sign-up">
+          <p className="auth__sign-up_text">
             {title === "Регистрация" ? "Уже зарегистрированы?" : ""}
           </p>
           <Link

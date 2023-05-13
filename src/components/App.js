@@ -10,8 +10,8 @@ import EditAvatarPopup from "./EditAvatarPopup.js";
 import AddPlacePopup from "./AddPlacePopup.js";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute.js"
-import Register from "./Register"
-import Login from "./Login"
+import Register from "./Register.js"
+import Login from "./Login.js"
 import InfoToolTip from "./InfoToolTip.js"
 
 import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
@@ -222,15 +222,9 @@ function App() {
           />
 
           <Routes>
-            <Route path="/sign-in">
-              <Login onLogin={handleLoginSubmit} />
-            </Route>
-            <Route path="/sign-up">
-              <Register onRegister={handleRegisterSubmit} />
-            </Route>
-            <Route>
-              {isLoggedIn ? <Navigate to="/" /> : <Navigate to="/sign-in" />}
-            </Route>
+            <Route path="/sign-in" element={<Login onLogin={handleLoginSubmit} />} />
+            <Route path="/sign-up" element={<Register onRegister={handleRegisterSubmit} />} />
+            <Route path="/" element={isLoggedIn ? <Navigate to="/" /> : <Navigate to="/sign-in" />} />
           </Routes>
 
           {isLoggedIn && <Footer />}
