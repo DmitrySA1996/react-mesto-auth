@@ -1,0 +1,7 @@
+.popup__tooltip_image {
+  display: flex;
+  margin: auto;
+  width: 120px;
+  height: 120px;
+  background: none;
+}
