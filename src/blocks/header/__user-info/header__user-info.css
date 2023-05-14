@@ -1,0 +1,14 @@
+.header__user-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 24px;
+  padding: 0px;
+}
+
+@media (max-width: 597px) {
+  .header__user-info {
+    display: none;
+  }
+}
