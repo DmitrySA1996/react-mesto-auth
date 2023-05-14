@@ -7,6 +7,10 @@
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__main/header__main.css);
 @import url(../blocks/header/__logo/header__logo.css);
+@import url(../blocks/header/__burger/header__burger.css);
+@import url(../blocks/header/__user-info/header__user-info.css);
+@import url(../blocks/header/__email/header__email.css);
+@import url(../blocks/header/__link/header__link.css);
 /* ------------------------------------------------------------------------------------------*/
 
 /* секция profile-----------------------------------------------------------------------------*/
@@ -75,6 +79,14 @@
 /* секция tooltip------------------------------------------------------------------------*/
 @import url(../blocks/popup/__tooltip/_image/popup__tooltip_image.css);
 @import url(../blocks/popup/__tooltip/_message/popup__tooltip_message.css);
+/* -----------------------------------------------------------------------------------------*/
+
+/* секция mobile------------------------------------------------------------------------*/
+@import url(../blocks/mobile-menu/mobile-menu.css);
+@import url(../blocks/mobile-menu/__email/mobile-menu__email.css);
+@import url(../blocks/mobile-menu/__exit/mobile-menu__exit.css);
+@import url(../blocks/mobile-menu/_opened/mobile-menu_opened.css);
+@import url(../blocks/mobile-menu/__header/mobile-menu__header.css);
 /* -----------------------------------------------------------------------------------------*/
 
 /*
