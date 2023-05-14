@@ -136,7 +136,7 @@ function App() {
         .then((res) => {
           setIsLoggedIn(true)
           setEmail(res.data.email)
-          navigate.push("/")
+          navigate("/", { replace: true })
         })
         .catch((err) => {
           if (err.status === 401) {
@@ -151,7 +151,7 @@ function App() {
     localStorage.removeItem("jwt")
     setIsLoggedIn(false)
     setIsMobileMenuOpen(false)
-    navigate.push("/sign-in")
+    navigate("/sign-in", { replace: true })
     setIsMobileMenuOpen(false)
   }
 
@@ -168,7 +168,7 @@ function App() {
         localStorage.setItem("jwt", res.token)
         setIsLoggedIn(true)
         setEmail(email)
-        navigate.push("/")
+        navigate("/", { replace: true })
       })
       .catch((err) => {
         if (err.status === 400) {
@@ -185,7 +185,7 @@ function App() {
       .then(() => {
         setInfoToolTipPopupOpen(true)
         setIsSuccess(true)
-        navigate.push("/sign-in")
+        navigate("/sign-in", { replace: true })
       })
       .catch((err) => {
         if (err.status === 400) {
@@ -221,7 +221,7 @@ function App() {
               onCardLike={handleCardLike}
               onDeletedCard={handleCardDelete}
               cards={cards}
-              component={Main}
+              element={Main}
             />} />
             <Route path="/sign-in" element={<Login onLogin={handleLoginSubmit} replace/>} />
             <Route path="/sign-up" element={<Register onRegister={handleRegisterSubmit} replace/>} />
