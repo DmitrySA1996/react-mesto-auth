@@ -218,7 +218,7 @@ function App() {
               onAddPlace={handleAddPlaceClick}
               onCardClick={setSelectedCard}
               onCardLike={handleCardLike}
-              onDeletedCard={handleCardDelete}
+              onCardDelete ={handleCardDelete}
               cards={cards}
               element={Main}
             />} />
